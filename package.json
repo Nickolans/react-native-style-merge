@@ -1,0 +1,36 @@
+{
+  "name": "react-native-style-merge",
+  "title": "React Native Style Merge",
+  "version": "1.0.0",
+  "description": "React Native style sheet merge to override local styles with global styles.",
+  "main": "index.js",
+  "files": [
+    "README.md",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/react-native-style-merge.git",
+    "baseUrl": "https://github.com/github_account/react-native-style-merge"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Nickolans Griffith"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "react": "^18.1.0",
+    "react-native": "^0.68.1"
+  }
+}
