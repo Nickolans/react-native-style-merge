@@ -10,6 +10,13 @@ class Merger {
    * @returns 
    */
    static deepMerge(obj, global) {
+
+    if (global == {}) {
+      return obj;
+    } else if (obj == {}) {
+      return global;
+    }
+
     var result = {...obj};
 
     for (const key in global) {
@@ -24,37 +31,26 @@ class Merger {
   }
 }
 
-class StyleSheet {
+class StyleSheetStore {
 
-  static global = {};
-  static reversePrecedence = false;
-
-  static configure = ({ global, reversePrecedence }) => {
-    this.global = global;
-    this.reversePrecedence = reversePrecedence;
-  }
-
-  static create = (stylesObj, rpres) => {
+  create = (stylesObj, global, rpres) => {
 
     var obj = {...stylesObj};
 
     // 1. Check local precedence first
     if (rpres != null) {
       if (rpres == true) {
-        return RN.StyleSheet.create(Merger.deepMerge(this.global, obj));
+        return RN.StyleSheet.create(Merger.deepMerge(global, obj));
       }  else if (rpres == false) {
-        return RN.StyleSheet.create(Merger.deepMerge(obj, this.global)); 
+        return RN.StyleSheet.create(Merger.deepMerge(obj, global)); 
       }
     }
 
-    // 2. Check global precedence
-    if (this.reversePrecedence) {
-      return RN.StyleSheet.create(Merger.deepMerge(this.global, obj));
-    }
-
-    // 3. Default
-    return RN.StyleSheet.create(Merger.deepMerge(obj, this.global));
+    // 2. Default
+    const result = RN.StyleSheet.create(Merger.deepMerge(obj, global));
+    return result;
   }
 }
 
-export default StyleSheet;
+const StyleSheetMerger = new StyleSheetStore();
+export default StyleSheetMerger;

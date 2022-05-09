@@ -11,17 +11,22 @@
 ## Usage
 
 ```javascript
-// 1. Declare global overriding stylesheet
-import StyleSheet from "react-native-style-merge";
+/* 1. Declare global overriding stylesheet */
 
-StyleSheet.global = {
-  button: {
-    backgroundColor: "green",
-  },
-};
+// CustomStyleSheet.jsx
+import GlobalStyles from "../Styles/global.styles";
+import StyleSheetMerger from "react-native-style-merge";
 
-// 2. Implement local styles as usual
-import StyleSheet from "react-native-style-merge";
+const StyleSheet = {
+  create: (styles, repres) => StyleSheetMerger.create(styles, GlobalStyles, repres)
+}
+
+export default StyleSheet;
+
+/* 2. Implement local styles as usual */
+
+// LocalStyleSheet.jsx
+import StyleSheet from "../CustomStyleSheet.jsx";
 
 const Styles = StyleSheet.create({
   button: {
@@ -31,7 +36,13 @@ const Styles = StyleSheet.create({
   },
 });
 
-// 3. Example: Button with green background, height of 100, and width of 50
+export default Styles;
+
+/* 3. Example: Button with green background, height of 100, and width of 50 */
+
+// MyComponent.jsx
+import Styles from "./LocalStyleSheet"
+
 <TouchableOpacity
   onPress={() => console.log("Pressing cool button")}
   style={Styles.button}
