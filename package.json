@@ -1,7 +1,7 @@
 {
   "name": "react-native-style-merge",
   "title": "React Native Style Merge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Native style sheet merge to override local styles with global styles.",
   "main": "index.js",
   "files": [
