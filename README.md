@@ -1,5 +1,7 @@
 # react-native-style-merge
 
+![npm](https://img.shields.io/npm/v/react-native-style-merge)
+
 ## Getting started
 
 `$ npm install react-native-style-merge --save`
